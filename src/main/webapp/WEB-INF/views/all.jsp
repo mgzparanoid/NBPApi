@@ -24,15 +24,32 @@
     SDKGSPDKGPODSKGOPSDKGPOKSDGKSDGOPK
     KOSDGKOPSDPOGKOPDSGKOPKSDGOPKSDGKSDGKP</h1>
 
+<%--TO DO:: Tutaj chce dodać możliwość wyszukiwania valut po wartości MID!!!!!!--%>
 
-<h6>
-    <c:forEach items="${rateDtoList}" var="rateDtoList">
-        <b>Currency: </b> ${rateDtoList.currency}
-        <b>Code: </b> ${rateDtoList.code}
-        <b>Mid: </b> ${rateDtoList.mid}
-        <br>
-    </c:forEach>
-</h6>
+
+
+
+<%--<form:form method="post" modelAttribute="rateDtoList">--%>
+<%--<div>--%>
+<%--    <label></label>--%>
+<%--</div>--%>
+<%--</form:form>--%>
+
+
+<table>
+    <h6>
+        <c:forEach items="${rateDtoList}" var="rateDtoList">
+            <tr>
+                <td>
+                    <b>Currency:</b> ${rateDtoList.currency}
+                    <b>Code: </b> ${rateDtoList.code}
+                    <b>Mid: </b> ${rateDtoList.mid}
+                    <br>
+                </td>
+            </tr>
+        </c:forEach>
+    </h6>
+</table>
 
 </body>
 </html>

@@ -27,14 +27,14 @@ public class NbpService implements ExchangeRate{
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b->b.stream())
-//                .forEach(r->r.toString());
                 .forEach(r->rateDtoList.add(r));
+
+        // Tutaj jakbym chciał zrobić loga w konsoli
 //                .forEach(r->log.info("rate: {}", r));
         // Tutaj będziemy printowali, muszę zmienić, żeby to było przekazywane do homecontrollera i później foreachowane
-//        .forEach(r-> System.out.println(r.toString()));
+//                .forEach(r-> System.out.println(r.toString()));
 
-//        System.out.println(Arrays.stream(body).toArray().toString());
-//        System.out.println(body.toString());
+
         return rateDtoList;
     }
 }

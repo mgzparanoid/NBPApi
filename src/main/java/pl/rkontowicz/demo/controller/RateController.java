@@ -35,7 +35,6 @@ public class RateController {
     @RequestMapping("/all")
     public String allCurrencies(Model model) {
         model.addAttribute("rateDtoList", nbpService.getDataFromTable());
-
         return "all";
     }
 }
