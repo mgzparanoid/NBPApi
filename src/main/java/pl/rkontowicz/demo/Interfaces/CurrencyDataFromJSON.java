@@ -9,9 +9,9 @@ import java.util.List;
 @Service("currencyDataFromJson")
 public class CurrencyDataFromJSON {
 
-    public List<Currency> currencyList(){
-        JSONObject jsonObject = new JSONObject(readJs)
-
-    }
+//    public List<Currency> currencyList(){
+//        JSONObject jsonObject = new JSONObject(readJs);
+//
+//    }
 
 }

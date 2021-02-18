@@ -24,8 +24,8 @@
 SDKGSPDKGPODSKGOPSDKGPOKSDGKSDGOPK
 KOSDGKOPSDPOGKOPDSGKOPKSDGOPKSDGKSDGKP</h1>
 <h3>
-    <c:forEach items="${currencyList}" var="currency">
-        <b>Name: </b> ${currencyList.name}
+    <c:forEach items="${rateDtoList}" var="currency">
+        <b>Name: </b> ${currency.name}
     </c:forEach>
 </h3>
 

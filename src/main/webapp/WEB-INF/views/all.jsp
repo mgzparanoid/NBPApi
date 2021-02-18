@@ -23,11 +23,16 @@
 <h1>AXGIOASDGJOIDGKJSDOGKSDGPKOSDGKOPSKDGOPSDGKOSDG
     SDKGSPDKGPODSKGOPSDKGPOKSDGKSDGOPK
     KOSDGKOPSDPOGKOPDSGKOPKSDGOPKSDGKSDGKP</h1>
-<h3>
-    <c:forEach items="${currencyList}" var="currency">
-        <b>Name: </b> ${currencyList.name}
+
+
+<h6>
+    <c:forEach items="${rateDtoList}" var="rateDtoList">
+        <b>Currency: </b> ${rateDtoList.currency}
+        <b>Code: </b> ${rateDtoList.code}
+        <b>Mid: </b> ${rateDtoList.mid}
+        <br>
     </c:forEach>
-</h3>
+</h6>
 
 </body>
 </html>

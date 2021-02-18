@@ -7,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.rkontowicz.demo.exchange.ExchangeRate;
 import pl.rkontowicz.demo.exchange.NbpService;
+import pl.rkontowicz.demo.exchange.RateDto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
@@ -15,6 +19,7 @@ public class RateController {
 
     private final NbpService nbpService;
     private final ExchangeRate exchangeRate;
+//    List<RateDto> rateDtoList = new ArrayList<>();
 
     public RateController(NbpService nbpService, ExchangeRate exchangeRate) {
         this.nbpService = nbpService;
@@ -29,7 +34,7 @@ public class RateController {
 
     @RequestMapping("/all")
     public String allCurrencies(Model model) {
-        model.addAttribute("currencyList", nbpService.getDataFromTable());
+        model.addAttribute("rateDtoList", nbpService.getDataFromTable());
 
         return "all";
     }

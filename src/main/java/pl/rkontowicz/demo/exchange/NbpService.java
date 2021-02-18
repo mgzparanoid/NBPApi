@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -21,9 +23,18 @@ public class NbpService implements ExchangeRate{
 
         TableDto[] body = forEntity.getBody();
 
+        List<RateDto> rateDtoList = new ArrayList<>();
+
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b->b.stream())
-                .forEach(r->log.info("rate: {}", r));
-        return null;
+//                .forEach(r->r.toString());
+                .forEach(r->rateDtoList.add(r));
+//                .forEach(r->log.info("rate: {}", r));
+        // Tutaj będziemy printowali, muszę zmienić, żeby to było przekazywane do homecontrollera i później foreachowane
+//        .forEach(r-> System.out.println(r.toString()));
+
+//        System.out.println(Arrays.stream(body).toArray().toString());
+//        System.out.println(body.toString());
+        return rateDtoList;
     }
 }
