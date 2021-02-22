@@ -4,7 +4,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.rkontowicz.demo.exchange.ExchangeRate;
 import pl.rkontowicz.demo.exchange.NbpService;
 import pl.rkontowicz.demo.exchange.RateDto;
@@ -37,4 +40,19 @@ public class RateController {
         model.addAttribute("rateDtoList", nbpService.getDataFromTable());
         return "all";
     }
+
+    @RequestMapping("/counter")
+    public String currencyCounter(Model model){
+        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+        return "counter";
+    }
+
+    @PostMapping("/counter")
+    public String currencyMid(double amount, Model model){
+        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+        model.addAttribute("result", amount * nbpService.getMid().doubleValue());
+        model.addAttribute("amount", amount);
+        return "counter";
+    }
+
 }

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @Slf4j
 public class NbpService implements ExchangeRate{
 
-    private static final String NBP_API_TABLE = "http://api.nbp.pl/api/exchangerates/tables/a/last/3?format=json";
+    private static final String NBP_API_TABLE = "http://api.nbp.pl/api/exchangerates/tables/a/last/1?format=json";
 
     @Override
     public Object getDataFromTable() {
@@ -31,10 +32,43 @@ public class NbpService implements ExchangeRate{
 
         // Tutaj jakbym chciał zrobić loga w konsoli
 //                .forEach(r->log.info("rate: {}", r));
-        // Tutaj będziemy printowali, muszę zmienić, żeby to było przekazywane do homecontrollera i później foreachowane
-//                .forEach(r-> System.out.println(r.toString()));
-
 
         return rateDtoList;
     }
+
+    public Object getCertainCurrency(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
+
+        TableDto[] body = forEntity.getBody();
+
+        List<RateDto> certainCurrencyList = new ArrayList<>();
+
+        Arrays.stream(body).map(TableDto::getRates)
+                .flatMap(b->b.stream())
+                .filter(c->c.getCode().equals("USD"))
+                .forEach(r->certainCurrencyList.add(r));
+
+        return certainCurrencyList.get(0);
+    }
+
+    public BigDecimal getMid(){
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
+
+        TableDto[] body = forEntity.getBody();
+
+        List<RateDto> certainCurrencyList = new ArrayList<>();
+
+        Arrays.stream(body).map(TableDto::getRates)
+                .flatMap(b->b.stream())
+                .filter(c->c.getCode().equals("USD"))
+                .forEach(r->certainCurrencyList.add(r));
+
+        return certainCurrencyList.get(0).getMid();
+
+    }
+
 }
