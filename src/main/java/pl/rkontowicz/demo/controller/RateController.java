@@ -38,12 +38,15 @@ public class RateController {
     @RequestMapping("/all")
     public String allCurrencies(Model model) {
         model.addAttribute("rateDtoList", nbpService.getDataFromTable());
+
         return "all";
     }
 
     @RequestMapping("/counter")
     public String currencyCounter(Model model){
         model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+        model.addAttribute("rateDtoList", nbpService.getDataFromTable());
+        model.addAttribute("codes", nbpService.getListOfCodes());
         return "counter";
     }
 

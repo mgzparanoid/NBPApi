@@ -68,7 +68,25 @@ public class NbpService implements ExchangeRate{
                 .forEach(r->certainCurrencyList.add(r));
 
         return certainCurrencyList.get(0).getMid();
+    }
 
+    public Object getListOfCodes() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
+
+        TableDto[] body = forEntity.getBody();
+
+        List<RateDto> rateDtoList = new ArrayList<>();
+
+        Arrays.stream(body).map(TableDto::getRates)
+                .flatMap(b->b.stream())
+                .forEach(r->rateDtoList.add(r));
+
+        // Tutaj jakbym chciał zrobić loga w konsoli
+//                .forEach(r->log.info("rate: {}", r));
+
+        return rateDtoList.get(0).getCode();
     }
 
 }
