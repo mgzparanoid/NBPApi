@@ -1,4 +1,4 @@
-package pl.rkontowicz.demo.exchange;
+package pl.rkontowicz.demo.Interfaces;
 
 public interface ExchangeRate {
 

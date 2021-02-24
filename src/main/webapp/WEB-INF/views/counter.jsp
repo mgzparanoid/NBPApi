@@ -15,7 +15,7 @@
     </td>
 </tr>
 <%--    Tutaj jest select, by dodać mnożnik z tego do działania--%>
-<%--<form:select path="codes" items="${rateDtoList}"/>--%>
+<form:select path="codes" items="${rateDtoList}"/>
 <form:form method="post">
 
     Insert amount that you want to convert: <input type="number" name="amount">

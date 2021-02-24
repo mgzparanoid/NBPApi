@@ -1,4 +1,4 @@
-package pl.rkontowicz.demo.exchange;
+package pl.rkontowicz.demo.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

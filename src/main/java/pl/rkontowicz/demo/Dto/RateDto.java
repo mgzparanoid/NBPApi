@@ -1,4 +1,4 @@
-package pl.rkontowicz.demo.exchange;
+package pl.rkontowicz.demo.Dto;
 
 import lombok.Data;
 import lombok.ToString;

@@ -6,14 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import pl.rkontowicz.demo.exchange.ExchangeRate;
-import pl.rkontowicz.demo.exchange.NbpService;
-import pl.rkontowicz.demo.exchange.RateDto;
-
-import java.util.ArrayList;
-import java.util.List;
+import pl.rkontowicz.demo.Interfaces.ExchangeRate;
+import pl.rkontowicz.demo.service.NbpService;
 
 @Controller
 @EnableAutoConfiguration
