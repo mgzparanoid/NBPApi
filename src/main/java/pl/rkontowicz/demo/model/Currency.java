@@ -1,5 +1,7 @@
 package pl.rkontowicz.demo.model;
 
+//I could just add @NoArgsConstructor @AllArgsConstructor @Getters @Setters and @toString from Lombok
+
 public class Currency {
     protected int id;
     protected String name;

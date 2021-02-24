@@ -19,19 +19,21 @@ public class NbpService implements ExchangeRate {
 
     private static final String NBP_API_TABLE = "http://api.nbp.pl/api/exchangerates/tables/a/last/1?format=json";
 
+    private RestTemplate restTemplate = new RestTemplate();
+
+    private ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
+
+    private TableDto[] body = forEntity.getBody();
+
     @Override
     public Object getDataFromTable() {
-        RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
-
-        TableDto[] body = forEntity.getBody();
 
         List<RateDto> rateDtoList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b->b.stream())
-                .forEach(r->rateDtoList.add(r));
+                .flatMap(b -> b.stream())
+                .forEach(r -> rateDtoList.add(r));
 
         // Tutaj jakbym chciał zrobić loga w konsoli
 //                .forEach(r->log.info("rate: {}", r));
@@ -39,55 +41,34 @@ public class NbpService implements ExchangeRate {
         return rateDtoList;
     }
 
-    public Object getCertainCurrency(){
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
-
-        TableDto[] body = forEntity.getBody();
-
+    public Object getCertainCurrency() {
         List<RateDto> certainCurrencyList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b->b.stream())
-                .filter(c->c.getCode().equals("USD"))
-                .forEach(r->certainCurrencyList.add(r));
+                .flatMap(b -> b.stream())
+                .filter(c -> c.getCode().equals("USD"))
+                .forEach(r -> certainCurrencyList.add(r));
 
         return certainCurrencyList.get(0);
     }
 
-    public BigDecimal getMid(){
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
-
-        TableDto[] body = forEntity.getBody();
-
+    public BigDecimal getMid() {
         List<RateDto> certainCurrencyList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b->b.stream())
-                .filter(c->c.getCode().equals("USD"))
-                .forEach(r->certainCurrencyList.add(r));
+                .flatMap(b -> b.stream())
+                .filter(c -> c.getCode().equals("USD"))
+                .forEach(r -> certainCurrencyList.add(r));
 
         return certainCurrencyList.get(0).getMid();
     }
 
     public Object getListOfCodes() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
-
-        TableDto[] body = forEntity.getBody();
-
         List<RateDto> rateDtoList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b->b.stream())
-                .forEach(r->rateDtoList.add(r));
-
-        // Tutaj jakbym chciał zrobić loga w konsoli
-//                .forEach(r->log.info("rate: {}", r));
+                .flatMap(b -> b.stream())
+                .forEach(r -> rateDtoList.add(r));
 
         return rateDtoList.get(0).getCode();
     }
