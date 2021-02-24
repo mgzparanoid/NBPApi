@@ -19,11 +19,11 @@ public class NbpService implements ExchangeRate {
 
     private static final String NBP_API_TABLE = "http://api.nbp.pl/api/exchangerates/tables/a/last/1?format=json";
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    private ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
+    private final ResponseEntity<TableDto[]> forEntity = restTemplate.getForEntity(NBP_API_TABLE, TableDto[].class);
 
-    private TableDto[] body = forEntity.getBody();
+    private final TableDto[] body = forEntity.getBody();
 
     @Override
     public Object getDataFromTable() {
@@ -35,7 +35,7 @@ public class NbpService implements ExchangeRate {
                 .flatMap(b -> b.stream())
                 .forEach(r -> rateDtoList.add(r));
 
-        // Tutaj jakbym chciał zrobić loga w konsoli
+        // If I ever wanted the results to be printed out on the console
 //                .forEach(r->log.info("rate: {}", r));
 
         return rateDtoList;
