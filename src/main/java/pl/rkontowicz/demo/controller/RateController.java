@@ -17,8 +17,6 @@ public class RateController {
 
     private final NbpService nbpService;
     private final ExchangeRate exchangeRate;
-//    List<RateDto> rateDtoList = new ArrayList<>();
-//    String radioButtonValue = request.getParameter("");
 
     public RateController(NbpService nbpService, ExchangeRate exchangeRate) {
         this.nbpService = nbpService;
@@ -40,12 +38,11 @@ public class RateController {
 
     @RequestMapping("/counter")
     public String currencyCounter(Model model){
-        //         Placeholder żeby mi jakąś walutę liczyło
-//        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
         model.addAttribute("rateDtoList", nbpService.getDataFromTable());
         model.addAttribute("getListOfCodes", nbpService.getListOfCodes());
         model.addAttribute("codes", nbpService.getListOfCodes());
         model.addAttribute("getMapOfCodes", nbpService.getMapOfCodes());
+
         return "counter";
     }
 
@@ -56,8 +53,7 @@ public class RateController {
         model.addAttribute("result", amount * nbpService.getMid(valueName).doubleValue());
         model.addAttribute("amount", amount);
         model.addAttribute("getMapOfCodes", nbpService.getMapOfCodes());
-//        model.addAttribute("b", nbpService.getMid());
-//        model.addAttribute("radio", amount * radio);
+
         return "counter";
     }
 
