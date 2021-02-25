@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.rkontowicz.demo.Interfaces.ExchangeRate;
 import pl.rkontowicz.demo.service.NbpService;
 
+
 @Controller
 @EnableAutoConfiguration
 @ComponentScan()
@@ -38,17 +39,23 @@ public class RateController {
 
     @RequestMapping("/counter")
     public String currencyCounter(Model model){
-        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+        //         Placeholder żeby mi jakąś walutę liczyło
+//        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
         model.addAttribute("rateDtoList", nbpService.getDataFromTable());
+        model.addAttribute("getListOfCodes", nbpService.getListOfCodes());
         model.addAttribute("codes", nbpService.getListOfCodes());
+        model.addAttribute("getMapOfCodes", nbpService.getMapOfCodes());
         return "counter";
     }
 
     @PostMapping("/counter")
     public String currencyMid(double amount, Model model){
         model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+        model.addAttribute("getListOfCodes", nbpService.getListOfCodes());
         model.addAttribute("result", amount * nbpService.getMid().doubleValue());
         model.addAttribute("amount", amount);
+        model.addAttribute("getMapOfCodes", nbpService.getMapOfCodes());
+        model.addAttribute("radio");
         return "counter";
     }
 

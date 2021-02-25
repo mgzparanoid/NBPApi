@@ -9,9 +9,7 @@ import pl.rkontowicz.demo.Dto.TableDto;
 import pl.rkontowicz.demo.Interfaces.ExchangeRate;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -27,8 +25,6 @@ public class NbpService implements ExchangeRate {
 
     @Override
     public Object getDataFromTable() {
-
-
         List<RateDto> rateDtoList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
@@ -53,24 +49,43 @@ public class NbpService implements ExchangeRate {
     }
 
     public BigDecimal getMid() {
-        List<RateDto> certainCurrencyList = new ArrayList<>();
+        List<RateDto> getMid = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
                 .filter(c -> c.getCode().equals("USD"))
-                .forEach(r -> certainCurrencyList.add(r));
+                .forEach(r -> getMid.add(r));
 
-        return certainCurrencyList.get(0).getMid();
+        return getMid.get(0).getMid();
     }
 
+//    public Object getListOfCodes() {
+//        List<RateDto> getListOfCodes = new ArrayList<>();
+//
+//        Arrays.stream(body).map(TableDto::getRates)
+//                .flatMap(b -> b.stream())
+//                .forEach(r -> getListOfCodes.add(r));
+//
+//        return getListOfCodes.get(0).getCode();
+//    }
+
+
+    //Jakby to zwracało mapę klucz ->CODE waluty i VALUE = mid valuty to by siędało obliczyć z tego.
     public Object getListOfCodes() {
-        List<RateDto> rateDtoList = new ArrayList<>();
+        List<String> getListOfCodes = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .forEach(r -> rateDtoList.add(r));
+                .forEach(r -> getListOfCodes.add(r.getCurrency()));
 
-        return rateDtoList.get(0).getCode();
+        return getListOfCodes;
     }
 
+    public Object getMapOfCodes(){
+        Map<String, Double> getMapOfCodes = new HashMap<String, Double>();
+        Arrays.stream(body).map(TableDto::getRates)
+                .flatMap(b -> b.stream())
+                .forEach(r -> getMapOfCodes.put(r.getCode(),r.getMid().doubleValue()));
+        return getMapOfCodes;
+    }
 }
