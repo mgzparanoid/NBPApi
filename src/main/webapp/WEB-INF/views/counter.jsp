@@ -21,15 +21,20 @@
 <%--<form:select path="codes" items="${getListOfCodes}"/>--%>
 
 <%--<form:radiobuttons path="getMapOfCodes" items="${getMapOfCodes}" display="value" name="radio"/>--%>
-<c:forEach items="${getMapOfCodes}" var="current">
-    <form:radiobutton path="getMapOfCodes" value="${current.key}" label="${current.key} Value: ${current.value}" name="radio" var="radio"/>
-    <br>
-</c:forEach>
-<b>${radio.value}</b>
+<%--<c:forEach items="${getMapOfCodes}" var="current">--%>
+<%--    <form:radiobutton path="getMapOfCodes" value="${current.key}" label="${current.key} Value: ${current.value}" name="radio" var="radio"/>--%>
+<%--    <br>--%>
+<%--</c:forEach>--%>
+<%--<%--%>
+<%--    String b = request.getParameter("current");--%>
+<%--    out.print(b);--%>
+<%--%>--%>
+<%--<b>${current.value}</b>--%>
 <br>
 <form:form method="post">
 
-    Insert amount that you want to convert: <input type="number" name="amount">
+    Insert amount that you want to convert: <input type="number" name="amount" step="0.01">
+    Insert the code of the value: <input type="text" name="valueName">
     <input type="submit" value="submit">
     <br>
     Converted value: ${result} zł.

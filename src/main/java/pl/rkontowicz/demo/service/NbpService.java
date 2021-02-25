@@ -37,23 +37,23 @@ public class NbpService implements ExchangeRate {
         return rateDtoList;
     }
 
-    public Object getCertainCurrency() {
+    public Object getCertainCurrency(String valueName) {
         List<RateDto> certainCurrencyList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equals("USD"))
+                .filter(c -> c.getCode().equals(valueName))
                 .forEach(r -> certainCurrencyList.add(r));
 
         return certainCurrencyList.get(0);
     }
 
-    public BigDecimal getMid() {
+    public BigDecimal getMid(String valueName) {
         List<RateDto> getMid = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equals("USD"))
+                .filter(c -> c.getCode().equals(valueName))
                 .forEach(r -> getMid.add(r));
 
         return getMid.get(0).getMid();

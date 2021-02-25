@@ -18,6 +18,7 @@ public class RateController {
     private final NbpService nbpService;
     private final ExchangeRate exchangeRate;
 //    List<RateDto> rateDtoList = new ArrayList<>();
+//    String radioButtonValue = request.getParameter("");
 
     public RateController(NbpService nbpService, ExchangeRate exchangeRate) {
         this.nbpService = nbpService;
@@ -49,13 +50,14 @@ public class RateController {
     }
 
     @PostMapping("/counter")
-    public String currencyMid(double amount, Model model){
-        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency());
+    public String currencyMid(double amount, Model model, String valueName){
+        model.addAttribute("certainCurrencyList", nbpService.getCertainCurrency(valueName));
         model.addAttribute("getListOfCodes", nbpService.getListOfCodes());
-        model.addAttribute("result", amount * nbpService.getMid().doubleValue());
+        model.addAttribute("result", amount * nbpService.getMid(valueName).doubleValue());
         model.addAttribute("amount", amount);
         model.addAttribute("getMapOfCodes", nbpService.getMapOfCodes());
-        model.addAttribute("radio");
+//        model.addAttribute("b", nbpService.getMid());
+//        model.addAttribute("radio", amount * radio);
         return "counter";
     }
 
