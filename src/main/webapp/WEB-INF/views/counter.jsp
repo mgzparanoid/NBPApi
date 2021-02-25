@@ -7,25 +7,22 @@
     <title>Currency Converter</title>
 </head>
 <body>
-<tr>
-    <td>
-        <b>Currency:</b> ${certainCurrencyList.currency}
-        <b>Code: </b> ${certainCurrencyList.code}
-        <b>Mid: </b> ${certainCurrencyList.mid}
-        <br>
-    </td>
-</tr>
+
 <%--    Tutaj jest select, by dodać mnożnik z tego do działania--%>
 <%--<form:select path="codes" items="${rateDtoList}" name="converter"/>--%>
 
 
-<%--<form:select path="codes" items="${getListOfCodes}"/>--%>
+<%--<form:input path="codes" items="${getListOfCodes}"/>--%>
 
 <%--<form:radiobuttons path="getMapOfCodes" items="${getMapOfCodes}" display="value" name="radio"/>--%>
-<%--<c:forEach items="${getMapOfCodes}" var="current">--%>
-<%--    <form:radiobutton path="getMapOfCodes" value="${current.key}" label="${current.key} Value: ${current.value}" name="radio" var="radio"/>--%>
-<%--    <br>--%>
-<%--</c:forEach>--%>
+<div>
+    <h1>List of currency codes you can enter:</h1>
+</div>
+<div>
+    <c:forEach items="${getMapOfCodes}" var="current">
+        <b>${current.key}</b>
+    </c:forEach>
+</div>
 <%--<%--%>
 <%--    String b = request.getParameter("current");--%>
 <%--    out.print(b);--%>
@@ -41,6 +38,15 @@
         <input type="submit" value="submit">
     </div>
     <br>
+    <h2>Currency summary</h2>
+    <tr>
+        <td>
+            <b>Currency:</b> ${certainCurrencyList.currency}
+            <b>Code: </b> ${certainCurrencyList.code}
+            <b>Mid: </b> ${certainCurrencyList.mid}
+            <br>
+        </td>
+    </tr>
         <%--        <div>--%>
         <%--            Converted value in polish currency(PLN): <b>${result}</b> .--%>
         <%--        </div>--%>
