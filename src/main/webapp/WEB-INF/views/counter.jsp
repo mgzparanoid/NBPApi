@@ -26,10 +26,10 @@
                                                        id="number">
         Insert the code of the value: <input type="text" name="valueName" required="yes" id="valueName" pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
                                                                                                   [Mm][Xx][Nn]|[Cc][Ll][Pp]|
-                                                                                                  ZAR|INR|THB|CNY|AUD|ILS|KRW|
-                                                                                                  JPY|GBP|IDR|HUF|PHP|TRY|RUB|HKD|
-                                                                                                  ISK|EUR|DKK|USD|CAD|MYR|XDR|BGN|
-                                                                                                  NOK|RON|SGD|CZK|SEK|NZD|UAH|BRL">
+                                                                                                  [Zz][Aa][Rr]|[Ii][Nn][Rr]|[Tt][Hh][Bb]|[Cc][Nn][Yy]|[Aa][Uu][Dd]|[Ii][Ll][Ss]|[Kk][Rr][Ww]|
+                                                                                                  [Jj][Pp][Yy]|[Gg][Bb][Pp]|[Ii][Dd][Rr]|[Hh][Uu][Ff]|[Pp][Hh][Pp]|[Tt][Rr][Yy]|[Rr][Uu][Bb]|[Hh][Kk][Dd]|
+                                                                                                  [Ii][Ss][Kk]|[Ee][Uu][Rr]|[Dd][Kk][Kk]|[Uu][Ss][Dd]|[Cc][Aa][Dd]|[Mm][Yy][Rr]|[Xx][Dd][Rr]|[Bb][Gg][Nn]|
+                                                                                                  [Nn][Oo][Kk]|[Rr][Oo][Nn]|[Ss][Gg][Dd]|[Cc][Zz][Kk]|[Ss][Ee][Kk]|[Nn][Zz][Dd]|[Uu][Aa][Hh]|[Bb][Rr][Ll]">
             <%--        TODO validation through a JS script, not the way it is.--%>
         <input type="submit" value="submit">
     </div>
