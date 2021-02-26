@@ -59,18 +59,6 @@ public class NbpService implements ExchangeRate {
         return getMid.get(0).getMid();
     }
 
-//    public Object getListOfCodes() {
-//        List<RateDto> getListOfCodes = new ArrayList<>();
-//
-//        Arrays.stream(body).map(TableDto::getRates)
-//                .flatMap(b -> b.stream())
-//                .forEach(r -> getListOfCodes.add(r));
-//
-//        return getListOfCodes.get(0).getCode();
-//    }
-
-
-    //Jakby to zwracało mapę klucz ->CODE waluty i VALUE = mid valuty to by siędało obliczyć z tego.
     public Object getListOfCodes() {
         List<String> getListOfCodes = new ArrayList<>();
 
@@ -81,11 +69,11 @@ public class NbpService implements ExchangeRate {
         return getListOfCodes;
     }
 
-    public Object getMapOfCodes(){
+    public Object getMapOfCodes() {
         Map<String, Double> getMapOfCodes = new HashMap<String, Double>();
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .forEach(r -> getMapOfCodes.put(r.getCode(),r.getMid().doubleValue()));
+                .forEach(r -> getMapOfCodes.put(r.getCode(), r.getMid().doubleValue()));
         return getMapOfCodes;
     }
 }

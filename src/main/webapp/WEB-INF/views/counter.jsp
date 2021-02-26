@@ -7,13 +7,7 @@
     <title>Currency Converter</title>
 </head>
 <body>
-
-<%--    Tutaj jest select, by dodać mnożnik z tego do działania--%>
-<%--<form:select path="codes" items="${rateDtoList}" name="converter"/>--%>
-
-
-<%--<form:input path="codes" items="${getListOfCodes}"/>--%>
-
+<%--TODO Adding script that takes the values from radio/select button to do the equation--%>
 <%--<form:radiobuttons path="getMapOfCodes" items="${getMapOfCodes}" display="value" name="radio"/>--%>
 <div>
     <h1>List of currency codes you can enter:</h1>
@@ -23,24 +17,20 @@
         <b>${current.key}</b>
     </c:forEach>
 </div>
-<%--<%--%>
-<%--    String b = request.getParameter("current");--%>
-<%--    out.print(b);--%>
-<%--%>--%>
-<%--<b>${current.value}</b>--%>
 <br>
 <div>
     <form:form method="post">
 
     <div>
-        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes" id="number">
-        Insert the code of the value: <input type="text" name="valueName" required="yes" id="valueName"  pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
+        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes"
+                                                       id="number">
+        Insert the code of the value: <input type="text" name="valueName" required="yes" id="valueName" pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
                                                                                                   [Mm][Xx][Nn]|[Cc][Ll][Pp]|
                                                                                                   ZAR|INR|THB|CNY|AUD|ILS|KRW|
                                                                                                   JPY|GBP|IDR|HUF|PHP|TRY|RUB|HKD|
                                                                                                   ISK|EUR|DKK|USD|CAD|MYR|XDR|BGN|
                                                                                                   NOK|RON|SGD|CZK|SEK|NZD|UAH|BRL">
-<%--        TODO validation through a JS script, not the way it is.--%>
+            <%--        TODO validation through a JS script, not the way it is.--%>
         <input type="submit" value="submit">
     </div>
     <br>
@@ -53,29 +43,13 @@
             <br>
         </td>
     </tr>
-        <%--        <div>--%>
-        <%--            Converted value in polish currency(PLN): <b>${result}</b> .--%>
-        <%--        </div>--%>
-        <%--        <br>--%>
-        <%--        <div>--%>
-        <%--            The math behind that:--%>
-        <%--            <br>--%>
-        <%--            The entered amount is:--%>
-        <%--            <br>--%>
-        <%--            <b>${amount}</b>--%>
-        <%--            <br>--%>
-        <%--            The entered currency is:--%>
-        <%--            <br>--%>
-        <%--            <b>${certainCurrencyList.code}</b>--%>
-        <%--            <br>--%>
-        <%--            The exchange rate for the currency is:--%>
-        <%--            <br>--%>
-        <%--            <b>${certainCurrencyList.mid}</b>--%>
 
 </div>
 </form:form>
 </div>
+
 <%--TODO This solution makes my eyes bleeding, hence I need to change it once I learn how to do it efficently. I could do that based on the ROLES, but that doesnt make any sense to include SPRING SECURITY in that application, as its for everybody.--%>
+
 <% if (request.getParameter("amount") != null && request.getParameter("valueName") != null) {
     out.println("  <div>\n" +
             "            Converted value in polish currency(PLN): <b>");
@@ -123,10 +97,10 @@ ${certainCurrencyList.mid}
 <script>
     const valueName = document.getElementById("valueName");
 
-    valueName.addEventListener("input", function (event){
-        if(valueName.validity.patternMismatch){
-            valueName.setCustomValidity("Wrong code, please look above for a list of all codes.");
-        }else{
+    valueName.addEventListener("input", function (event) {
+        if (valueName.validity.patternMismatch) {
+            valueName.setCustomValidity("Wrong code, please look above for a list of all codes. Be vary of unnecessary spaces.");
+        } else {
             valueName.setCustomValidity("");
         }
     });
