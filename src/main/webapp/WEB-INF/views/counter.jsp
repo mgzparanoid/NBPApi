@@ -40,6 +40,7 @@
                                                                                                   JPY|GBP|IDR|HUF|PHP|TRY|RUB|HKD|
                                                                                                   ISK|EUR|DKK|USD|CAD|MYR|XDR|BGN|
                                                                                                   NOK|RON|SGD|CZK|SEK|NZD|UAH|BRL">
+<%--        TODO validation through a JS script, not the way it is.--%>
         <input type="submit" value="submit">
     </div>
     <br>
