@@ -33,8 +33,13 @@
     <form:form method="post">
 
     <div>
-        Insert amount that you want to convert: <input type="number" name="amount" step="0.01">
-        Insert the code of the value: <input type="text" name="valueName">
+        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes">
+        Insert the code of the value: <input type="text" name="valueName" required="yes"  pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
+                                                                                                  [Mm][Xx][Nn]|[Cc][Ll][Pp]|
+                                                                                                  ZAR|INR|THB|CNY|AUD|ILS|KRW|
+                                                                                                  JPY|GBP|IDR|HUF|PHP|TRY|RUB|HKD|
+                                                                                                  ISK|EUR|DKK|USD|CAD|MYR|XDR|BGN|
+                                                                                                  NOK|RON|SGD|CZK|SEK|NZD|UAH|BRL">
         <input type="submit" value="submit">
     </div>
     <br>

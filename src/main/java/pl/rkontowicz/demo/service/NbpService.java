@@ -42,7 +42,7 @@ public class NbpService implements ExchangeRate {
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equals(valueName))
+                .filter(c -> c.getCode().equalsIgnoreCase(valueName))
                 .forEach(r -> certainCurrencyList.add(r));
 
         return certainCurrencyList.get(0);
@@ -53,7 +53,7 @@ public class NbpService implements ExchangeRate {
 
         Arrays.stream(body).map(TableDto::getRates)
                 .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equals(valueName))
+                .filter(c -> c.getCode().equalsIgnoreCase(valueName))
                 .forEach(r -> getMid.add(r));
 
         return getMid.get(0).getMid();
