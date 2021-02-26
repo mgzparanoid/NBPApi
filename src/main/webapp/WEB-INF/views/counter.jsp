@@ -33,8 +33,8 @@
     <form:form method="post">
 
     <div>
-        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes">
-        Insert the code of the value: <input type="text" name="valueName" required="yes"  pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
+        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes" id="number">
+        Insert the code of the value: <input type="text" name="valueName" required="yes" id="valueName"  pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
                                                                                                   [Mm][Xx][Nn]|[Cc][Ll][Pp]|
                                                                                                   ZAR|INR|THB|CNY|AUD|ILS|KRW|
                                                                                                   JPY|GBP|IDR|HUF|PHP|TRY|RUB|HKD|
@@ -119,7 +119,17 @@ ${certainCurrencyList.mid}
 %>
 
 </form>
+<script>
+    const valueName = document.getElementById("valueName");
 
+    valueName.addEventListener("input", function (event){
+        if(valueName.validity.patternMismatch){
+            valueName.setCustomValidity("Wrong code, please look above for a list of all codes.");
+        }else{
+            valueName.setCustomValidity("");
+        }
+    });
+</script>
 
 </body>
 </html>
