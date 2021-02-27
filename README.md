@@ -2,8 +2,10 @@ An application that takes the data from NBA Api and converts it to PLN depending
 
 Technologies used:
 
-Java
+Java,
 Spring,
 Hibernate,
 JSON,
+Rest API,
+JavaScript,
 Lombok.
