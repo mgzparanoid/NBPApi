@@ -12,8 +12,11 @@ import pl.rkontowicz.demo.Dto.TableDto;
 import pl.rkontowicz.demo.model.Currency;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -40,7 +43,7 @@ class NbpServiceTest {
     @BeforeAll
     void getCertainCurrency() {
         //given
-        RateDto rateDto = new RateDto("frank szwajcarski", "CHF", new BigDecimal(4.1205));
+        RateDto rateDto = new RateDto("frank szwajcarski", "CHF", new BigDecimal(4.1211));
         String valueName = "CHF";
         RateDto serviceDto = nbpService.getCertainCurrency(valueName);
         //when
@@ -48,6 +51,19 @@ class NbpServiceTest {
         //then
         assertEquals(serviceDto.getCurrency(), rateDto.getCurrency());
         assertEquals(serviceDto.getCode(), rateDto.getCode());
-        //cant compare MIDS, as its changing on a daily basis.
+//        assertEquals(serviceDto.getMid(), rateDto.getMid().setScale(4, RoundingMode.FLOOR));
+        //In order to compare MIDS you have to change it daily.
+    }
+
+    @Test
+    void getMapOfCodes() {
+        //given
+        Map<String, Double> mapOfCodes = new HashMap<>();
+        mapOfCodes.put("CHF", 4.1211);
+        //when
+        Map<String, Double> serviceMap = nbpService.getMapOfCodes();
+        //then
+        assertEquals(serviceMap.get("CHF"), mapOfCodes.get("CHF"));
+        //To make this test pass, you have to update the Mid value.
     }
 }

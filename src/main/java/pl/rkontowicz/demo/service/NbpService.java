@@ -24,57 +24,61 @@ public class NbpService implements ExchangeRate {
     private final TableDto[] body = forEntity.getBody();
 
     @Override
-    public Object getDataFromTable() {
+    public List<RateDto> getDataFromTable() {
         List<RateDto> rateDtoList = new ArrayList<>();
+        if (body != null) {
+            Arrays.stream(body).map(TableDto::getRates)
+                    .flatMap(b -> b.stream())
+                    .forEach(r -> rateDtoList.add(r));
 
-        Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b -> b.stream())
-                .forEach(r -> rateDtoList.add(r));
+            // If I ever wanted the results to be printed out on the console
+            //                .forEach(r->log.info("rate: {}", r));
 
-        // If I ever wanted the results to be printed out on the console
-//                .forEach(r->log.info("rate: {}", r));
-
+        }
         return rateDtoList;
     }
 
     public RateDto getCertainCurrency(String valueName) {
 
         List<RateDto> certainCurrencyList = new ArrayList<>();
-
-        Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equalsIgnoreCase(valueName))
-                .forEach(r -> certainCurrencyList.add(r));
-
+        if (body != null) {
+            Arrays.stream(body).map(TableDto::getRates)
+                    .flatMap(b -> b.stream())
+                    .filter(c -> c.getCode().equalsIgnoreCase(valueName))
+                    .forEach(r -> certainCurrencyList.add(r));
+        }
         return certainCurrencyList.get(0);
     }
 
     public BigDecimal getMid(String valueName) {
         List<RateDto> getMid = new ArrayList<>();
-
-        Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b -> b.stream())
-                .filter(c -> c.getCode().equalsIgnoreCase(valueName))
-                .forEach(r -> getMid.add(r));
+        if (body != null) {
+            Arrays.stream(body).map(TableDto::getRates)
+                    .flatMap(b -> b.stream())
+                    .filter(c -> c.getCode().equalsIgnoreCase(valueName))
+                    .forEach(r -> getMid.add(r));
+        }
 
         return getMid.get(0).getMid();
     }
 
-    public Object getListOfCodes() {
+    public List<String> getListOfCodes() {
         List<String> getListOfCodes = new ArrayList<>();
-
-        Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b -> b.stream())
-                .forEach(r -> getListOfCodes.add(r.getCurrency()));
-
+        if (body != null) {
+            Arrays.stream(body).map(TableDto::getRates)
+                    .flatMap(b -> b.stream())
+                    .forEach(r -> getListOfCodes.add(r.getCurrency()));
+        }
         return getListOfCodes;
     }
 
-    public Object getMapOfCodes() {
-        Map<String, Double> getMapOfCodes = new HashMap<String, Double>();
-        Arrays.stream(body).map(TableDto::getRates)
-                .flatMap(b -> b.stream())
-                .forEach(r -> getMapOfCodes.put(r.getCode(), r.getMid().doubleValue()));
+    public Map<String, Double> getMapOfCodes() {
+        Map<String, Double> getMapOfCodes = new HashMap<>();
+        if (body != null) {
+            Arrays.stream(body).map(TableDto::getRates)
+                    .flatMap(b -> b.stream())
+                    .forEach(r -> getMapOfCodes.put(r.getCode(), r.getMid().doubleValue()));
+        }
         return getMapOfCodes;
     }
 }
