@@ -4,21 +4,20 @@
 <html>
 <head>
     <title>Index</title>
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="script" href="resources/js/app.js">
 </head>
 <body>
 <%@include file="parts/header.jsp" %>
-<h2>Strona główna</h2>
-<h1>AXGIOASDGJOIDGKJSDOGKSDGPKOSDGKOPSKDGOPSDGKOSDG
-    SDKGSPDKGPODSKGOPSDKGPOKSDGKSDGOPK
-    KOSDGKOPSDPOGKOPDSGKOPKSDGOPKSDGKSDGKP</h1>
+<h2>This is a simple currency counter application, to go to the counter click on the middle button in the menu.</h2>
+<h3>Enjoy your stay.</h3>
 
 <h3>
-    <c:forEach items="${rateDtoList}" var="currency">
+    List of currency names in Polish:
+    <br>
+    <c:forEach items="${rateDtoList}" var="rateDtoList">
         <tr>
             <td>
-                <b>Name: </b> ${currency.name}
+                <b>Name: </b> ${rateDtoList.currency}
+                <br>
             </td>
         </tr>
     </c:forEach>

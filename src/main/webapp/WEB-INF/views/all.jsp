@@ -4,31 +4,19 @@
 <html>
 <head>
     <title>All</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700|Open+Sans:400,600,700&amp;subset=latin-ext"
-          rel="stylesheet">
+
 
     <%--    <style>--%>
     <%--        <%@ include file="/css/style.css" %>--%>
     <%--    </style>--%>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
 </head>
 <body>
+<%@include file="parts/header.jsp" %>
 
-<h2>Strona główna</h2>
-<h1>AXGIOASDGJOIDGKJSDOGKSDGPKOSDGKOPSKDGOPSDGKOSDG
-    SDKGSPDKGPODSKGOPSDKGPOKSDGKSDGOPK
-    KOSDGKOPSDPOGKOPDSGKOPKSDGOPKSDGKSDGKP</h1>
+<h2>List of all currencies, codes and their exchange rate values taken from the NBP API:</h2>
 
 <%--TO DO:: Tutaj chce dodać możliwość wyszukiwania valut po wartości MID!!!!!!--%>
-
-
-
 
 <%--<form:form method="post" modelAttribute="rateDtoList">--%>
 <%--<div>--%>
