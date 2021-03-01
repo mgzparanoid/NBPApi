@@ -24,8 +24,9 @@ public class RateController {
     }
 
     @RequestMapping("/")
-    public String getConcurrencyTable() {
+    public String getConcurrencyTable(Model model) {
         exchangeRate.getDataFromTable();
+        model.addAttribute("rateDtoList", nbpService.getDataFromTable());
         return "index";
     }
 

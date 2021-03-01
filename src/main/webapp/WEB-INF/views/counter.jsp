@@ -7,6 +7,7 @@
     <title>Currency Converter</title>
 </head>
 <body>
+<%@include file="parts/header.jsp" %>
 <%--TODO Adding script that takes the values from radio/select button to do the equation--%>
 <%--<form:radiobuttons path="getMapOfCodes" items="${getMapOfCodes}" display="value" name="radio"/>--%>
 <div>
@@ -22,9 +23,9 @@
     <form:form method="post">
 
     <div>
-        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes"
-                                                       id="number">
-        Insert the code of the value: <input type="text" name="valueName" required="yes" id="valueName" pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
+        Insert amount that you want to convert: <input type="number" label="number" name="amount" step="0.01" required="yes"
+                                                       id="number" >
+        Insert the code of the value: <input type="text" label="code" name="valueName" required="yes" id="valueName" pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
                                                                                                   [Mm][Xx][Nn]|[Cc][Ll][Pp]|
                                                                                                   [Zz][Aa][Rr]|[Ii][Nn][Rr]|[Tt][Hh][Bb]|[Cc][Nn][Yy]|[Aa][Uu][Dd]|[Ii][Ll][Ss]|[Kk][Rr][Ww]|
                                                                                                   [Jj][Pp][Yy]|[Gg][Bb][Pp]|[Ii][Dd][Rr]|[Hh][Uu][Ff]|[Pp][Hh][Pp]|[Tt][Rr][Yy]|[Rr][Uu][Bb]|[Hh][Kk][Dd]|

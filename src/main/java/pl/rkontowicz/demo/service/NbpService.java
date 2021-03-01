@@ -37,7 +37,8 @@ public class NbpService implements ExchangeRate {
         return rateDtoList;
     }
 
-    public Object getCertainCurrency(String valueName) {
+    public RateDto getCertainCurrency(String valueName) {
+
         List<RateDto> certainCurrencyList = new ArrayList<>();
 
         Arrays.stream(body).map(TableDto::getRates)
