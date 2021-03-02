@@ -28,8 +28,8 @@ public class NbpService implements ExchangeRate {
         List<RateDto> rateDtoList = new ArrayList<>();
         if (body != null) {
             Arrays.stream(body).map(TableDto::getRates)
-                    .flatMap(b -> b.stream())
-                    .forEach(r -> rateDtoList.add(r));
+                    .flatMap(Collection::stream)
+                    .forEach(rateDtoList::add);
 
             // If I ever wanted the results to be printed out on the console
             //                .forEach(r->log.info("rate: {}", r));
@@ -43,9 +43,9 @@ public class NbpService implements ExchangeRate {
         List<RateDto> certainCurrencyList = new ArrayList<>();
         if (body != null) {
             Arrays.stream(body).map(TableDto::getRates)
-                    .flatMap(b -> b.stream())
+                    .flatMap(Collection::stream)
                     .filter(c -> c.getCode().equalsIgnoreCase(valueName))
-                    .forEach(r -> certainCurrencyList.add(r));
+                    .forEach(certainCurrencyList::add);
         }
         return certainCurrencyList.get(0);
     }
@@ -54,9 +54,9 @@ public class NbpService implements ExchangeRate {
         List<RateDto> getMid = new ArrayList<>();
         if (body != null) {
             Arrays.stream(body).map(TableDto::getRates)
-                    .flatMap(b -> b.stream())
+                    .flatMap(Collection::stream)
                     .filter(c -> c.getCode().equalsIgnoreCase(valueName))
-                    .forEach(r -> getMid.add(r));
+                    .forEach(getMid::add);
         }
 
         return getMid.get(0).getMid();
@@ -66,7 +66,7 @@ public class NbpService implements ExchangeRate {
         List<String> getListOfCodes = new ArrayList<>();
         if (body != null) {
             Arrays.stream(body).map(TableDto::getRates)
-                    .flatMap(b -> b.stream())
+                    .flatMap(Collection::stream)
                     .forEach(r -> getListOfCodes.add(r.getCurrency()));
         }
         return getListOfCodes;
@@ -76,7 +76,7 @@ public class NbpService implements ExchangeRate {
         Map<String, Double> getMapOfCodes = new HashMap<>();
         if (body != null) {
             Arrays.stream(body).map(TableDto::getRates)
-                    .flatMap(b -> b.stream())
+                    .flatMap(Collection::stream)
                     .forEach(r -> getMapOfCodes.put(r.getCode(), r.getMid().doubleValue()));
         }
         return getMapOfCodes;

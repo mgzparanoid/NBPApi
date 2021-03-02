@@ -5,23 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 import pl.rkontowicz.demo.Dto.RateDto;
-import pl.rkontowicz.demo.Dto.TableDto;
-import pl.rkontowicz.demo.model.Currency;
-
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -52,7 +39,7 @@ class NbpServiceTest {
         assertEquals(serviceDto.getCurrency(), rateDto.getCurrency());
         assertEquals(serviceDto.getCode(), rateDto.getCode());
 //        assertEquals(serviceDto.getMid(), rateDto.getMid().setScale(4, RoundingMode.FLOOR));
-        //In order to compare MIDS you have to change it daily.
+        //In order to compare MID values you have to change it daily.
     }
 
     @Test

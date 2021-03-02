@@ -10,18 +10,18 @@
 <h2>This is a simple currency counter application, to go to the counter click on the middle button in the menu.</h2>
 <h3>Enjoy your stay.</h3>
 
-<h3>
+<h4>
     List of currency names in Polish:
     <br>
     <c:forEach items="${rateDtoList}" var="rateDtoList">
         <tr>
             <td>
-                <b>Name: </b> ${rateDtoList.currency}
+                ${rateDtoList.currency}
                 <br>
             </td>
         </tr>
     </c:forEach>
-</h3>
+</h4>
 <%@include file="parts/footer.jsp" %>
 </body>
 </html>

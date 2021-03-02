@@ -23,7 +23,7 @@
     <form:form method="post">
 
     <div>
-        Insert amount that you want to convert: <input type="number" label="number" name="amount" step="0.01" required="yes"
+        Insert amount that you want to convert: <input type="number" name="amount" step="0.01" required="yes"
                                                        id="number" >
         Insert the code of the value: <input type="text" label="code" name="valueName" required="yes" id="valueName" pattern="[Cc][Hh][Ff]|[Hh][Rr][Kk]|
                                                                                                   [Mm][Xx][Nn]|[Cc][Ll][Pp]|
@@ -94,7 +94,6 @@ ${certainCurrencyList.mid}
     }
 %>
 
-</form>
 <script>
     const valueName = document.getElementById("valueName");
 
