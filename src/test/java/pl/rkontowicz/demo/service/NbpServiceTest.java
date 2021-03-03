@@ -53,4 +53,18 @@ class NbpServiceTest {
         assertEquals(serviceMap.get("CHF"), mapOfCodes.get("CHF"));
         //To make this test pass, you have to update the Mid value.
     }
+
+    // TODO: Rewrite the tests, add plenty of more, add implementation of the newly created tests.
+
+    @Test
+    void getDataFromTable() {
+    }
+
+    @Test
+    void getMid() {
+    }
+
+    @Test
+    void getListOfCodes() {
+    }
 }
